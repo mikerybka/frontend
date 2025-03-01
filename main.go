@@ -54,6 +54,8 @@ func main() {
 		BackendURL: parsedURL,
 	}
 
+	h.TwilioClient.SendSMS(h.AdminPhone, "Frontend started.")
+
 	// Create an HTTPS server using autocert
 	httpsServer := &http.Server{
 		Addr:      ":443",
