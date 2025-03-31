@@ -8,6 +8,7 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"os"
+	"strings"
 
 	"github.com/mikerybka/twilio"
 	"github.com/mikerybka/util"
@@ -38,7 +39,9 @@ func main() {
 		Cache:  autocert.DirCache(certDir),
 		Prompt: autocert.AcceptTOS,
 		HostPolicy: func(ctx context.Context, host string) error {
-			fmt.Println(host)
+			if len(strings.Split(host, ".")) > 3 {
+				return fmt.Errorf("host not allowed: %s", host)
+			}
 			return nil
 		},
 	}
