@@ -102,12 +102,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			s.TwilioClient.SendSMS(s.AdminPhone, "A hundred 502s")
 		case 1000:
 			s.TwilioClient.SendSMS(s.AdminPhone, "A thousand 502s")
-		case 1_000_000:
-			s.TwilioClient.SendSMS(s.AdminPhone, "A million 502s")
-		case 1_000_000_000:
-			s.TwilioClient.SendSMS(s.AdminPhone, "A billion 502s")
-		case 1_000_000_000_000:
-			s.TwilioClient.SendSMS(s.AdminPhone, "A trillion 502s")
 		}
 	}
 }
